@@ -6,25 +6,21 @@ import Counter from '../components/Counter';
 
 beforeEach(() => {
   // Render the Counter component here
+  render(<Counter />);
 })
 
 test('renders counter message', () => {
-  render(<Counter />);
   const counterMessage = screen.getByText(/Counter/i);
   expect(counterMessage).toBeInTheDocument();
 });
 
 test('should render initial count with value of 0', () => {
-  render(<Counter />);
-
   // Check if the initial count is rendered as 0
   const countElement = screen.getByTestId("count");
   expect(countElement).toHaveTextContent("0");
 });
 
 test('clicking + increments the count', () => {
-  render(<Counter />);
-
   // Click the + button
   const incrementButton = screen.getByText("+");
   userEvent.click(incrementButton);
@@ -35,8 +31,6 @@ test('clicking + increments the count', () => {
 });
 
 test('clicking - decrements the count', () => {
-  render(<Counter />);
-
   //Click - button
   const decrementButton = screen.getByText("-");
   userEvent.click(decrementButton);
